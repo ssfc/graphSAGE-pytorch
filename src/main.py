@@ -15,10 +15,9 @@ parser = argparse.ArgumentParser(description='pytorch version of GraphSAGE')
 parser.add_argument('--dataSet', type=str, default='cora')
 parser.add_argument('--agg_func', type=str, default='MEAN')
 parser.add_argument('--epochs', type=int, default=50)
-parser.add_argument('--b_sz', type=int, default=20)
+parser.add_argument('--b_sz', type=int, default=20)  # batch size;
 parser.add_argument('--seed', type=int, default=824)
-parser.add_argument('--cuda', action='store_true',
-					help='use CUDA')
+parser.add_argument('--cuda', action='store_true',	help='use CUDA')
 parser.add_argument('--gcn', action='store_true')
 parser.add_argument('--learn_method', type=str, default='sup')
 parser.add_argument('--unsup_loss', type=str, default='normal')
@@ -27,7 +26,8 @@ parser.add_argument('--name', type=str, default='debug')
 parser.add_argument('--config', type=str, default='./src/experiments.conf')
 args = parser.parse_args()
 
-if torch.cuda.is_available():
+# --------------------------------------------- 2. this part set device --------------------------------------
+if torch.cuda.is_available():  # Returns a bool indicating if CUDA is currently available;
 	if not args.cuda:
 		print("WARNING: You have a CUDA device, so you should probably run with --cuda")
 	else:
