@@ -41,8 +41,9 @@ if __name__ == '__main__':
 	random.seed(args.seed)
 	np.random.seed(args.seed)
 	torch.manual_seed(args.seed)
-	torch.cuda.manual_seed_all(args.seed)
+	torch.cuda.manual_seed_all(args.seed)  # To seed all GPUs;
 
+	# --------------------------------------------- 4. this part load data --------------------------------------
 	# load config file
 	config = pyhocon.ConfigFactory.parse_file(args.config)
 
