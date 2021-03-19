@@ -31,8 +31,8 @@ if torch.cuda.is_available():  # Returns a bool indicating if CUDA is currently 
 	if not args.cuda:
 		print("WARNING: You have a CUDA device, so you should probably run with --cuda")
 	else:
-		device_id = torch.cuda.current_device()
-		print('using device', device_id, torch.cuda.get_device_name(device_id))
+		device_id = torch.cuda.current_device()  # Returns the index of a currently selected device;
+		print('using device', device_id, torch.cuda.get_device_name(device_id))  # Gets the name of a device;
 
 device = torch.device("cuda" if args.cuda else "cpu")
 print('DEVICE:', device)
