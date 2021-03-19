@@ -9,6 +9,7 @@ from src.dataCenter import *
 from src.utils import *
 from src.models import *
 
+# --------------------------------------------- 1. this part use argparse --------------------------------------
 parser = argparse.ArgumentParser(description='pytorch version of GraphSAGE')
 
 parser.add_argument('--dataSet', type=str, default='cora')
