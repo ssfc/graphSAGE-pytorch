@@ -51,14 +51,14 @@ if __name__ == '__main__':
 	ds = args.dataSet
 	dataCenter = DataCenter(config)
 	dataCenter.load_dataSet(ds)
-	features = torch.FloatTensor(getattr(dataCenter, ds+'_feats')).to(device)
+	features = torch.FloatTensor(getattr(dataCenter, ds+'_feats')).to(device)  # send feature to device;
 
 	graphSage = GraphSage(config['setting.num_layers'], features.size(1), config['setting.hidden_emb_size'], features, getattr(dataCenter, ds+'_adj_lists'), device, gcn=args.gcn, agg_func=args.agg_func)
 	graphSage.to(device)
 
 	num_labels = len(set(getattr(dataCenter, ds+'_labels')))
 	classification = Classification(config['setting.hidden_emb_size'], num_labels)
-	classification.to(device)
+	classification.to(device)  # send classification to device;
 
 	unsupervised_loss = UnsupervisedLoss(getattr(dataCenter, ds+'_adj_lists'), getattr(dataCenter, ds+'_train'), device)
 
